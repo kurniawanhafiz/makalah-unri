@@ -73,7 +73,7 @@ makalah-unri/
 
 ## Cara pasang
 
-Ganti `<username>` dengan nama akun GitHub pemilik repo ini. Setelah dipasang, mulai sesi atau chat baru supaya skill terbaca, lalu panggil dengan `/makalah-unri`.
+Setelah dipasang, mulai sesi atau chat baru supaya skill terbaca, lalu panggil dengan `/makalah-unri`.
 
 ### Claude (claude.ai atau aplikasi desktop)
 
@@ -91,7 +91,7 @@ Catatan:
 Skill pribadi (berlaku di semua proyek):
 
 ```bash
-git clone https://github.com/<username>/makalah-unri.git ~/.claude/skills/makalah-unri
+git clone https://github.com/kurniawanhafiz/makalah-unri.git ~/.claude/skills/makalah-unri
 ```
 
 Atau per proyek: clone ke `.claude/skills/makalah-unri` di folder proyek. Tanpa git, ekstrak zip lalu pindahkan foldernya ke `~/.claude/skills/` dengan nama `makalah-unri`. Buka sesi Claude Code baru, lalu ketik `/makalah-unri`.
@@ -101,7 +101,7 @@ Atau per proyek: clone ke `.claude/skills/makalah-unri` di folder proyek. Tanpa 
 Skill Hermes berada di `~/.hermes/skills/` (setiap skill satu folder berisi `SKILL.md`):
 
 ```bash
-git clone https://github.com/<username>/makalah-unri.git ~/.hermes/skills/makalah-unri
+git clone https://github.com/kurniawanhafiz/makalah-unri.git ~/.hermes/skills/makalah-unri
 ```
 
 Alternatif: simpan skill di folder lain lalu daftarkan di `~/.hermes/config.yaml`:
@@ -119,7 +119,7 @@ Mulai sesi baru, lalu panggil `/makalah-unri` atau minta Hermes membuat makalah.
 Taruh foldernya di folder `skills` workspace OpenClaw (skill workspace punya prioritas tertinggi):
 
 ```bash
-git clone https://github.com/<username>/makalah-unri.git <workspace>/skills/makalah-unri
+git clone https://github.com/kurniawanhafiz/makalah-unri.git <workspace>/skills/makalah-unri
 ```
 
 `<workspace>` adalah folder workspace agenmu. Mulai sesi baru supaya skill terbaca. Bila tidak muncul, cek dokumentasi OpenClaw bagian Skills (urutan folder dan pengaturan `skills.load.extraDirs`).
