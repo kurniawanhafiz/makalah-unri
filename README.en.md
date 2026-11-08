@@ -32,14 +32,14 @@ UNIVERSITAS RIAU
 
 ## Install
 
-Replace `<username>` with the GitHub account that owns this repo. After installing, start a new session or chat so the skill is picked up, then call it with `/makalah-unri`.
+After installing, start a new session or chat so the skill is picked up, then call it with `/makalah-unri`.
 
 **Claude (claude.ai or desktop app):** on the repo page click **Code**, then **Download ZIP**; in Claude open **Settings**, then **Skills**, and upload the zip. If the upload is rejected because of the folder name, extract the zip, rename the folder to `makalah-unri`, re-zip, and upload again.
 
 **Claude Code:**
 
 ```bash
-git clone https://github.com/<username>/makalah-unri.git ~/.claude/skills/makalah-unri
+git clone https://github.com/kurniawanhafiz/makalah-unri.git ~/.claude/skills/makalah-unri
 ```
 
 (or `.claude/skills/makalah-unri` inside a project for a per-project skill).
@@ -47,7 +47,7 @@ git clone https://github.com/<username>/makalah-unri.git ~/.claude/skills/makala
 **Hermes Agent:** skills live in `~/.hermes/skills/`, one folder per skill with a `SKILL.md`:
 
 ```bash
-git clone https://github.com/<username>/makalah-unri.git ~/.hermes/skills/makalah-unri
+git clone https://github.com/kurniawanhafiz/makalah-unri.git ~/.hermes/skills/makalah-unri
 ```
 
 Or keep the folder elsewhere and list its parent under `skills.external_dirs` in `~/.hermes/config.yaml`.
@@ -55,7 +55,7 @@ Or keep the folder elsewhere and list its parent under `skills.external_dirs` in
 **OpenClaw:** put the folder in the `skills` folder of your OpenClaw workspace (workspace skills have the highest precedence):
 
 ```bash
-git clone https://github.com/<username>/makalah-unri.git <workspace>/skills/makalah-unri
+git clone https://github.com/kurniawanhafiz/makalah-unri.git <workspace>/skills/makalah-unri
 ```
 
 If it does not show up, check the OpenClaw Skills docs (folder precedence and `skills.load.extraDirs`).
