@@ -2,7 +2,7 @@
 
 Skill untuk membuat **makalah kuliah berbahasa Indonesia** dalam format `.docx` yang siap dikumpulkan, dengan format standar Universitas Riau (UNRI). Cover, daftar isi otomatis, penomoran halaman, penomoran heading, rumus, gambar, dan daftar pustaka APA sudah diatur oleh skrip, jadi pengguna cukup memberi materi dan referensi.
 
-> **Dibuat oleh Kurniawan Hafiz** | Versi 6.0.0 | [English](README.en.md)
+> **Dibuat oleh Kurniawan Hafiz** | Versi 6.0.0 | [English](README.en.md) | [Panduan shortcut](SHORTCUT.md)
 
 ## Apa yang baru di v6
 
@@ -11,6 +11,24 @@ Skill untuk membuat **makalah kuliah berbahasa Indonesia** dalam format `.docx` 
 - Ukuran font cover: seluruh teks cover 14.
 - Label "contoh rekaan" tidak dipakai lagi, dan data pribadi dibersihkan dari contoh dan dokumentasi.
 - Cara pasang di Claude Code, Hermes Agent, dan OpenClaw ada di bagian [Cara pasang](#cara-pasang).
+
+### Yang sudah ada di v5
+
+- **Consensus AI dan OpenAlex dipakai bersamaan.** Bila kedua konektor terpasang, terhubung, dan belum limit, tiap butir materi dicari di keduanya, hasil digabung, dan duplikat dibuang. Bisa juga menetapkan di prompt salah satu sebagai utama dan yang lain pelengkap, atau membagi tugas keduanya.
+- Bila hanya satu konektor yang tersedia, skill memakai yang tersedia lalu melengkapi dengan pencarian web. Bila tidak ada, skill memakai pencarian web (DOAJ, Garuda, laman jurnal, dst).
+- Ketentuan bawaan tiap konektor: open access, tanpa preprint, 5 tahun terakhir (OpenAlex: karya, `fulltext`, Boolean dan stemming aktif). Bisa diganti lewat prompt.
+- Sumber berbahasa Indonesia dicari lewat semua jalur sekaligus, lalu pencarian web bila masih kurang.
+- Hasil Consensus tanpa DOI dicocokkan lewat OpenAlex, dan semua sumber tetap diverifikasi ke laman aslinya.
+
+### Yang sudah ada sejak v3
+
+- Daftar pustaka rata kiri-kanan dan menggantung sudah dipasang langsung di skrip, begitu juga spasi 12 pt setelah Heading 1.
+- Satu perintah untuk seluruh alur: `python3 scripts/build.py content.json hasil.docx`.
+- Blok `equation` (LaTeX jadi equation Word yang bisa diedit), rumus sebaris `$...$`, dan blok `image` dengan keterangan "Gambar n." otomatis.
+- Validator `check_content.py` sebelum build: sitasi, urutan abjad, jumlah dan tahun referensi, bahasa, em dash, dan kata gemar AI.
+- `preview.sh` merender cover, daftar isi, halaman bab, dan daftar pustaka ke PNG.
+- Tabel status referensi untuk ringkasan akhir.
+- Skrip tidak lagi terkunci ke path tertentu.
 
 Daftar lengkap ada di [CHANGELOG.md](CHANGELOG.md).
 
@@ -50,6 +68,7 @@ Sebagian aturan itu sekarang dicek mesin lewat `check_content.py`, jadi pelangga
 ```
 makalah-unri/
 ├── README.md                   # file ini
+├── SHORTCUT.md                 # cara pakai shortcut di file hasil skill
 ├── README.en.md                # versi Inggris
 ├── SKILL.md                    # instruksi skill untuk Claude
 ├── CHANGELOG.md                # catatan perubahan
@@ -138,7 +157,7 @@ File `.docx` hasil skill memakai style dari `assets/Normal.dotm`, tetapi makro d
 2. Di Word buka makalahnya, aktifkan tab **Developer**, klik **Document Template**, lalu **Attach** dan pilih `Normal.dotm`. Jangan centang "Automatically update document styles".
 3. Izinkan makro bila Word menanyakannya.
 
-Beberapa shortcut di template: `Ctrl+1` sampai `Ctrl+9` heading, `Ctrl+D` daftar isi, `Ctrl+G` keterangan gambar, `Ctrl+T` keterangan tabel, `Ctrl+L` keterangan lampiran, `Alt+R` dan `Alt+L` nomor halaman romawi dan angka, `Alt+N` section baru, `Alt+S` ekspor PDF.
+Daftar lengkap shortcut (heading `Ctrl+1` sampai `Ctrl+9`, style paragraf `Alt+1` sampai `Alt+9`, keterangan gambar, tabel, dan lampiran, nomor halaman, section, dan ekspor PDF) ada di **[SHORTCUT.md](SHORTCUT.md)**. Ringkasnya: `Ctrl+1` sampai `Ctrl+9` heading, `Alt+1` sampai `Alt+9` style isi paragraf, `Ctrl+G` keterangan gambar, `Ctrl+T` keterangan tabel, `Ctrl+L` keterangan lampiran, `Ctrl+D` daftar isi, `Alt+R` dan `Alt+L` nomor halaman romawi dan angka, `Alt+N` section baru, `Alt+S` ekspor PDF.
 
 ## Cara pakai dengan panggil skill
 
@@ -215,7 +234,7 @@ Ringkasnya: `meta` (judul, matkul, dosen, universitas, tahun, jumlah_anggota, ko
 | Rumus kosong di preview | Lihat batasan di atas. Cek di Word. |
 | Nomor halaman daftar isi meleset | Klik kanan daftar isi, **Update Field**. |
 | Zip ditolak saat upload skill | Ganti nama folder hasil ekstrak jadi `makalah-unri`, kompres ulang. |
-| Shortcut Word dari template tidak jalan | File docx tidak membawa makro; pasang `assets/Normal.dotm` seperti di bagian Template Word. |
+| Shortcut Word dari template tidak jalan | File docx tidak membawa makro; pasang `assets/Normal.dotm` seperti di bagian Template Word, lalu lihat [SHORTCUT.md](SHORTCUT.md). |
 
 ## Catatan
 
