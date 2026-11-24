@@ -2,39 +2,23 @@
 
 Skill untuk membuat **makalah kuliah berbahasa Indonesia** dalam format `.docx` yang siap dikumpulkan, dengan format standar Universitas Riau (UNRI). Cover, daftar isi otomatis, penomoran halaman, penomoran heading, rumus, gambar, dan daftar pustaka APA sudah diatur oleh skrip, jadi pengguna cukup memberi materi dan referensi.
 
-> **Dibuat oleh Kurniawan Hafiz** | Versi 6.1.0 | [English](README.en.md)
+> **Dibuat oleh Kurniawan Hafiz** | Versi 6.2.0 |
+
+## Apa yang baru di v6.2
+
+Hemat token (tanpa mengubah format keluaran):
+
+- `SKILL.md` dipangkas dari sekitar 3.300 menjadi sekitar 1.500 kata. Bagian pencarian dan verifikasi referensi dipindah ke `references/referensi.md`, dibaca hanya pada langkah referensi.
+- Deskripsi skill dipersingkat (dimuat di setiap sesi).
+- Cek visual (`--preview`, PNG) menjadi opsional; bawaan mengandalkan validasi skrip.
+- Logo UNRI dikompres dari 1,3 MB menjadi sekitar 54 KB (tampilan di cover sama).
+- Skrip tidak diubah.
 
 ## Apa yang baru di v6.1
 
 - **Keluaran bawaan `.docm`.** Proyek VBA, shortcut keyboard, dan building block dari `assets/Normal.dotm` ikut tersalin ke makalah, jadi Ctrl+1 sampai Ctrl+9 (heading), Ctrl+D (daftar isi), Ctrl+G (keterangan gambar), Ctrl+T (keterangan tabel), dan lainnya langsung aktif tanpa memasang template.
 - `--docx` menghasilkan `.docx` biasa tanpa makro, untuk portal kampus yang menolak `.docm`.
 - Struktur `.docm` diperiksa otomatis (zip dan XML valid, makro, shortcut, dan building block tersalin utuh dari template). Makronya sendiri belum bisa dijalankan di mesin pembuat; cek langkah di bagian [Template Word dan makro](#template-word-dan-makro).
-
-## Apa yang baru di v6
-
-- **Memakai template Word `assets/Normal.dotm`.** Heading 1 ("BAB I"), Heading 2 (1.1), Heading 3 (1.1.1) sampai Heading 9 bernomor otomatis; DAFTAR ISI, KATA PENGANTAR, dan DAFTAR PUSTAKA memakai style Heading Default (Title); paragraf memakai Body Main, Body 2, dan Body 3. Hasilnya mudah diedit sendiri di Word: ganti level heading lewat style, nomor ikut berubah.
-- **Daftar Gambar dan Daftar Tabel otomatis** bila makalah punya gambar atau tabel (keterangan memakai style Caption dengan nomor otomatis).
-- Ukuran font cover: seluruh teks cover 14.
-- Label "contoh rekaan" tidak dipakai lagi, dan data pribadi dibersihkan dari contoh dan dokumentasi.
-- Cara pasang di Claude Code, Hermes Agent, dan OpenClaw ada di bagian [Cara pasang](#cara-pasang).
-
-### Yang sudah ada di v5
-
-- **Consensus AI dan OpenAlex dipakai bersamaan.** Bila kedua konektor terpasang, terhubung, dan belum limit, tiap butir materi dicari di keduanya, hasil digabung, dan duplikat dibuang. Bisa juga menetapkan di prompt salah satu sebagai utama dan yang lain pelengkap, atau membagi tugas keduanya.
-- Bila hanya satu konektor yang tersedia, skill memakai yang tersedia lalu melengkapi dengan pencarian web. Bila tidak ada, skill memakai pencarian web (DOAJ, Garuda, laman jurnal, dst).
-- Ketentuan bawaan tiap konektor: open access, tanpa preprint, 5 tahun terakhir (OpenAlex: karya, `fulltext`, Boolean dan stemming aktif). Bisa diganti lewat prompt.
-- Sumber berbahasa Indonesia dicari lewat semua jalur sekaligus, lalu pencarian web bila masih kurang.
-- Hasil Consensus tanpa DOI dicocokkan lewat OpenAlex, dan semua sumber tetap diverifikasi ke laman aslinya.
-
-### Yang sudah ada sejak v3
-
-- Daftar pustaka rata kiri-kanan dan menggantung sudah dipasang langsung di skrip, begitu juga spasi 12 pt setelah Heading 1.
-- Satu perintah untuk seluruh alur: `python3 scripts/build.py content.json hasil.docx`.
-- Blok `equation` (LaTeX jadi equation Word yang bisa diedit), rumus sebaris `$...$`, dan blok `image` dengan keterangan "Gambar n." otomatis.
-- Validator `check_content.py` sebelum build: sitasi, urutan abjad, jumlah dan tahun referensi, bahasa, em dash, dan kata gemar AI.
-- `preview.sh` merender cover, daftar isi, halaman bab, dan daftar pustaka ke PNG.
-- Tabel status referensi untuk ringkasan akhir.
-- Skrip tidak lagi terkunci ke path tertentu.
 
 Daftar lengkap ada di [CHANGELOG.md](CHANGELOG.md).
 
