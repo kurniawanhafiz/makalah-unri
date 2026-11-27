@@ -20,38 +20,6 @@ Token savings; the output format is unchanged:
 - The UNRI logo was compressed from 1.3 MB to about 54 KB (looks the same on the cover).
 - The scripts are unchanged.
 
-## What's new in v6.1
-
-- **Default output is `.docm`.** The VBA project, keyboard shortcuts, and building blocks from `assets/Normal.dotm` are copied into the paper, so `Ctrl+1` to `Ctrl+9` (headings), `Ctrl+D` (table of contents), `Ctrl+G` (figure caption), `Ctrl+T` (table caption), and the rest work without installing the template.
-- `--docx` produces a plain `.docx` without macros, for campus portals that reject `.docm`.
-- The `.docm` structure is checked automatically (valid zip and XML; macros, shortcuts, and building blocks copied intact from the template). The macros themselves cannot be run on the build machine; see the steps in [Word template and macros](#word-template-and-macros).
-
-## What's new in v6
-
-- **Uses the Word template `assets/Normal.dotm`.** Heading 1 ("BAB I"), Heading 2 (1.1), Heading 3 (1.1.1) through Heading 9 are numbered automatically; TABLE OF CONTENTS (DAFTAR ISI), PREFACE (KATA PENGANTAR), and REFERENCES (DAFTAR PUSTAKA) use the Heading Default (Title) style; paragraphs use Body Main, Body 2, and Body 3. The result is easy to edit in Word: change a heading level through its style and the numbering follows.
-- **Automatic List of Figures and List of Tables** when the paper has figures or tables (captions use the Caption style with automatic numbering).
-- Cover font size: all cover text is 14 pt.
-- The "contoh rekaan" (made-up example) label is gone, and personal data was removed from examples and docs.
-- Install instructions for Claude Code, Hermes Agent, and OpenClaw are in [Install](#install).
-
-### What was already in v5
-
-- **Consensus AI and OpenAlex used together.** When both connectors are installed, connected, and under their limits, every topic point is searched in both, the results are merged, and duplicates are removed. You can also name one as primary and the other as a supplement in the prompt, or split the work between them.
-- With only one connector available, the skill uses it and fills the gaps with web search. With none, it uses web search (DOAJ, Garuda, journal pages, etc.).
-- Default rules for each connector: open access, no preprints, past 5 years (OpenAlex: works, `fulltext`, Boolean and stemming on). Any of these can be changed in the prompt.
-- Indonesian-language sources are searched through every route at once, then web search if still short.
-- Consensus results without a DOI are matched through OpenAlex, and every source is still verified against its original page.
-
-### Since v3
-
-- Justified and hanging-indent reference list, and 12 pt spacing after Heading 1, are built into the script.
-- One command for the whole pipeline: `python3 scripts/build.py content.json out/Paper.docm`.
-- `equation` blocks (LaTeX converted to editable Word equations), inline `$...$` math, and `image` blocks with automatic "Gambar b.n." captions (e.g. Gambar 1.1).
-- `check_content.py` validator before building: citations, alphabetical order, source count and years, language, em dashes, and AI-favoured words.
-- `preview.sh` renders the cover, table of contents, chapter pages, and reference list to PNG.
-- Reference status table for the final summary.
-- Scripts no longer depend on environment-specific paths.
-
 See [CHANGELOG.md](CHANGELOG.md) for the full list (in Indonesian).
 
 ## What it produces
